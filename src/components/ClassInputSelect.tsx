@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
-import { getAllClasses, normalizeClassName, SD_CLASSES, SMP_CLASSES } from '../lib/utils';
-import { Plus, ListFilter, Sparkles, Check, School, GraduationCap } from 'lucide-react';
+import { getAllClasses, normalizeClassName, SMP_CLASSES } from '../lib/utils';
+import { Plus, ListFilter, Sparkles, Check, GraduationCap } from 'lucide-react';
 import { Student } from '../types';
 
 interface ClassInputSelectProps {
@@ -28,7 +28,6 @@ export const ClassInputSelect: React.FC<ClassInputSelectProps> = ({
 
   // If there are no registered classes, default to custom/quick-pick input mode
   const [isCustomMode, setIsCustomMode] = useState(() => registeredClasses.length === 0);
-  const [activeTab, setActiveTab] = useState<'SD' | 'SMP'>('SD');
 
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const val = e.target.value;
@@ -111,7 +110,7 @@ export const ClassInputSelect: React.FC<ClassInputSelectProps> = ({
             <input
               type="text"
               className="input bg-white font-bold text-indigo-950 text-base placeholder:text-gray-400 placeholder:font-normal"
-              placeholder="Ketik kelas (contoh: 1A, 7A, 8B, 9C, 1D, dsb)..."
+              placeholder="Ketik kelas (contoh: 7A, 8B, 9C, dsb)..."
               value={currentNormalized}
               onChange={(e) => handleCustomInput(e.target.value)}
               disabled={disabled}
@@ -132,33 +131,14 @@ export const ClassInputSelect: React.FC<ClassInputSelectProps> = ({
                 Pilihan Cepat Sesuai Jenjang
               </span>
               <div className="flex rounded-lg bg-white/80 p-0.5 border border-indigo-100">
-                <button
-                  type="button"
-                  onClick={() => setActiveTab('SD')}
-                  className={`px-2.5 py-1 text-xs font-bold rounded-md transition flex items-center gap-1 ${
-                    activeTab === 'SD'
-                      ? 'bg-indigo-600 text-white shadow-xs'
-                      : 'text-gray-600 hover:text-indigo-600'
-                  }`}
-                >
-                  <School size={12} /> SD (1-6)
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setActiveTab('SMP')}
-                  className={`px-2.5 py-1 text-xs font-bold rounded-md transition flex items-center gap-1 ${
-                    activeTab === 'SMP'
-                      ? 'bg-indigo-600 text-white shadow-xs'
-                      : 'text-gray-600 hover:text-indigo-600'
-                  }`}
-                >
+                <span className="px-2.5 py-1 text-xs font-bold rounded-md bg-indigo-600 text-white shadow-xs flex items-center gap-1">
                   <GraduationCap size={12} /> SMP (7-9)
-                </button>
+                </span>
               </div>
             </div>
 
             <div className="flex flex-wrap gap-1.5 max-h-28 overflow-y-auto pr-1">
-              {(activeTab === 'SD' ? SD_CLASSES : SMP_CLASSES).map((cls) => {
+              {SMP_CLASSES.map((cls) => {
                 const isSelected = currentNormalized === cls;
                 return (
                   <button
@@ -178,7 +158,7 @@ export const ClassInputSelect: React.FC<ClassInputSelectProps> = ({
             </div>
 
             <p className="text-[11px] text-indigo-700/80 leading-tight">
-              💡 <em>Tips:</em> Klik tombol pilihan di atas atau ketik langsung huruf/angka kelas jika memiliki kelas lain (contoh: 1D, 7D, 8B). Kelas aktif akan langsung menyesuaikan dengan yang diinput.
+              💡 <em>Tips:</em> Klik tombol pilihan di atas atau ketik langsung huruf/angka kelas jika memiliki kelas lain (contoh: 7D, 8B). Kelas aktif akan langsung menyesuaikan dengan yang diinput.
             </p>
           </div>
         </div>
