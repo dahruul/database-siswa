@@ -427,7 +427,7 @@ export default function StudentsList() {
         <div className="relative w-full sm:w-48 flex items-center">
           <Filter className="absolute left-4 text-gray-400 pointer-events-none z-10" size={20} />
           <select 
-            className="w-full bg-white/80 backdrop-blur-lg border border-white/80 pr-5 py-3 pl-12 appearance-none rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-400/50 font-medium text-gray-800 cursor-pointer"
+            className="w-full bg-white/80 backdrop-blur-lg border border-white/80 px-10 py-3 appearance-none rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-400/50 font-medium text-gray-800 text-center cursor-pointer"
             value={filterClass}
             onChange={(e) => setFilterClass(e.target.value)}
           >
@@ -440,7 +440,7 @@ export default function StudentsList() {
         <div className="relative w-full sm:w-56 flex items-center">
           <ArrowUpDown className="absolute left-4 text-gray-400 pointer-events-none z-10" size={20} />
           <select 
-            className="w-full bg-white/80 backdrop-blur-lg border border-white/80 pr-5 py-3 pl-12 appearance-none rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-400/50 font-medium text-gray-800 cursor-pointer"
+            className="w-full bg-white/80 backdrop-blur-lg border border-white/80 px-10 py-3 appearance-none rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-400/50 font-medium text-gray-800 text-center cursor-pointer"
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value as any)}
           >
