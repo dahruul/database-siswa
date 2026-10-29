@@ -411,20 +411,23 @@ export default function StudentsList() {
       </div>
 
       <div className="flex flex-col sm:flex-row gap-4 mb-2">
-        <div className="relative flex-1">
-          <Search className="absolute left-4 top-3.5 text-gray-400" size={20} />
+        {/* Input Pencarian */}
+        <div className="relative flex-1 flex items-center">
+          <Search className="absolute left-4 text-gray-400 pointer-events-none z-10" size={20} />
           <input 
             type="text" 
             placeholder="Cari berdasarkan Nama, NIS, atau NISN..." 
-            className="w-full bg-white/60 backdrop-blur-lg border border-white/80 px-5 py-3 rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-400/50 pl-12 font-medium text-gray-800 placeholder-gray-400"
+            className="w-full bg-white/80 backdrop-blur-lg border border-white/80 pr-5 py-3 pl-12 rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-400/50 font-medium text-gray-800 placeholder-gray-400"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
-        <div className="relative w-full sm:w-48">
-          <Filter className="absolute left-4 top-3.5 text-gray-400" size={20} />
+
+        {/* Filter Kelas */}
+        <div className="relative w-full sm:w-48 flex items-center">
+          <Filter className="absolute left-4 text-gray-400 pointer-events-none z-10" size={20} />
           <select 
-            className="w-full bg-white/60 backdrop-blur-lg border border-white/80 px-5 py-3 rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-400/50 pl-12 appearance-none font-medium text-gray-800"
+            className="w-full bg-white/80 backdrop-blur-lg border border-white/80 pr-5 py-3 pl-12 appearance-none rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-400/50 font-medium text-gray-800 cursor-pointer"
             value={filterClass}
             onChange={(e) => setFilterClass(e.target.value)}
           >
@@ -432,10 +435,12 @@ export default function StudentsList() {
             {getAllClasses(students).map(c => <option key={c} value={c}>Kelas {c}</option>)}
           </select>
         </div>
-        <div className="relative w-full sm:w-56">
-          <ArrowUpDown className="absolute left-4 top-3.5 text-gray-400" size={20} />
+
+        {/* Urutkan */}
+        <div className="relative w-full sm:w-56 flex items-center">
+          <ArrowUpDown className="absolute left-4 text-gray-400 pointer-events-none z-10" size={20} />
           <select 
-            className="w-full bg-white/60 backdrop-blur-lg border border-white/80 px-5 py-3 rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-400/50 pl-12 appearance-none font-medium text-gray-800"
+            className="w-full bg-white/80 backdrop-blur-lg border border-white/80 pr-5 py-3 pl-12 appearance-none rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-400/50 font-medium text-gray-800 cursor-pointer"
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value as any)}
           >
