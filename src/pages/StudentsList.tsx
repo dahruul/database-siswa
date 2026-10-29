@@ -424,31 +424,33 @@ export default function StudentsList() {
         </div>
 
         {/* Filter Kelas */}
-        <div className="relative w-full sm:w-48 flex items-center">
-          <Filter className="absolute left-4 text-gray-400 pointer-events-none z-10" size={20} />
+        <div className="relative w-full sm:w-52 flex items-center">
+          <Filter className="absolute left-3.5 text-gray-400 pointer-events-none z-10" size={18} />
           <select 
-            className="w-full bg-white/80 backdrop-blur-lg border border-white/80 px-10 py-3 appearance-none rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-400/50 font-medium text-gray-800 text-center cursor-pointer"
+            className="w-full bg-white/80 backdrop-blur-lg border border-white/80 pl-9 pr-4 py-3 appearance-none rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-400/50 font-medium text-gray-800 text-center text-xs sm:text-sm cursor-pointer"
             value={filterClass}
             onChange={(e) => setFilterClass(e.target.value)}
           >
-            <option value="">Semua Kelas ({getActiveClasses(students).length} Aktif)</option>
-            {getAllClasses(students).map(c => <option key={c} value={c}>Kelas {c}</option>)}
+            <option value="" className="text-center">Semua Kelas ({getActiveClasses(students).length} Aktif)</option>
+            {getAllClasses(students).map(c => (
+              <option key={c} value={c} className="text-center">Kelas {c}</option>
+            ))}
           </select>
         </div>
 
         {/* Urutkan */}
         <div className="relative w-full sm:w-56 flex items-center">
-          <ArrowUpDown className="absolute left-4 text-gray-400 pointer-events-none z-10" size={20} />
+          <ArrowUpDown className="absolute left-3.5 text-gray-400 pointer-events-none z-10" size={18} />
           <select 
-            className="w-full bg-white/80 backdrop-blur-lg border border-white/80 px-10 py-3 appearance-none rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-400/50 font-medium text-gray-800 text-center cursor-pointer"
+            className="w-full bg-white/80 backdrop-blur-lg border border-white/80 pl-9 pr-4 py-3 appearance-none rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-400/50 font-medium text-gray-800 text-center text-xs sm:text-sm cursor-pointer"
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value as any)}
           >
-            <option value="default">Urutkan: Default</option>
-            <option value="name-asc">Urutkan: Nama (A - Z)</option>
-            <option value="name-desc">Urutkan: Nama (Z - A)</option>
-            <option value="class-asc">Urutkan: Kelas (Terendah)</option>
-            <option value="class-desc">Urutkan: Kelas (Tertinggi)</option>
+            <option value="default" className="text-center">Urutkan: Default</option>
+            <option value="name-asc" className="text-center">Urutkan: Nama (A - Z)</option>
+            <option value="name-desc" className="text-center">Urutkan: Nama (Z - A)</option>
+            <option value="class-asc" className="text-center">Urutkan: Kelas (Terendah)</option>
+            <option value="class-desc" className="text-center">Urutkan: Kelas (Tertinggi)</option>
           </select>
         </div>
       </div>
